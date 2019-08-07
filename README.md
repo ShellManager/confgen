@@ -1,24 +1,6 @@
-# README
+# ShellManager Config Generator
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Hey there! This application is used to allow [the ShellManager iPXE script](https://github.com/td512/shellmanager-ipxe) to autoboot CentOS, Fedora, Debian, and Ubuntu. 
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# Contributing
+Pull requests are welcome
