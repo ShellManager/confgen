@@ -1,18 +1,8 @@
 d-i debian-installer/locale string en_US
 
 d-i keyboard-configuration/xkb-keymap select us
-### Network configuration
-# Disable network configuration entirely. This is useful for cdrom
-# installations on non-networked devices where the network questions,
-# warning and long timeouts are a nuisance.
-# d-i netcfg/enable boolean false
 
-# netcfg will choose an interface that has link if possible. This makes it
-# skip displaying a list if there is more than one interface.
 d-i netcfg/choose_interface select auto
-
-# To pick a particular interface instead:
-#d-i netcfg/choose_interface select eth1
 
 # To set a different link detection timeout (default is 3 seconds).
 # Values are interpreted as seconds.
@@ -27,38 +17,16 @@ d-i netcfg/choose_interface select auto
 # the static network configuration below.
 d-i netcfg/disable_autoconfig boolean true
 
-# If you want the preconfiguration file to work on systems both with and
-# without a dhcp server, uncomment these lines and the static network
-# configuration below.
-d-i netcfg/dhcp_failed note
-d-i netcfg/dhcp_options select Configure network manually
-
 d-i netcfg/get_ipaddress string 169.254.250.250
 d-i netcfg/get_netmask string 255.255.0.0
 d-i netcfg/get_gateway string 
 d-i netcfg/get_nameservers string 
 d-i netcfg/confirm_static boolean true
 
-d-i netcfg/get_ipaddress string 
-d-i netcfg/get_netmask string 
-d-i netcfg/get_gateway string 
-d-i netcfg/get_nameservers string 
-d-i netcfg/confirm_static boolean true
-
-d-i netcfg/get_hostname string <%= @hostname %>
-d-i netcfg/get_domain string 
-
-# If you want to force a hostname, regardless of what either the DHCP
-# server returns or what the reverse DNS entry for the IP is, uncomment
-# and adjust the following line.
 d-i netcfg/hostname string <%= @hostname %>
-
-d-i netcfg/wireless_wep string
 
 d-i hw-detect/load_firmware boolean true
 
-### Mirror settings
-# If you select ftp, the mirror/country string does not need to be set.
 d-i mirror/protocol string http
 d-i mirror/country string manual
 d-i mirror/http/hostname string 169.254.254.254:8080
