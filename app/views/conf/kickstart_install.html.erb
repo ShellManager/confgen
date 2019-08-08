@@ -26,9 +26,9 @@ reboot
 <% if @os == "centos" %>
 repo --name=base --baseurl=http://169.254.254.254:8080/<%= @os %>/<%= @version %>/os/x86_64/
 repo --name=epel-release --baseurl=http://169.254.254.254:8080/epel/<%= @version %>/x86_64/
-repo --name=elrepo-kernel --baseurl=http://169.254.254.254:8080/linux/kernel/elrepo/<%= @version %>/x86_64/
-repo --name=elrepo-release --baseurl=http://169.254.254.254:8080/linux/kernel/elrepo/<%= @version %>/x86_64/
-repo --name=elrepo-extras --baseurl=http://169.254.254.254:8080/linux/kernel/elrepo/<%= @version %>/x86_64/
+repo --name=elrepo-kernel --baseurl=http://169.254.254.254:8080/elrepo/kernel/elrepo/el<%= @version %>/x86_64/
+repo --name=elrepo-release --baseurl=http://169.254.254.254:8080/elrepo/elrepo/elrepo/el<%= @version %>/x86_64/
+repo --name=elrepo-extras --baseurl=http://169.254.254.254:8080/elrepo/extras/elrepo/el<%= @version %>/x86_64/
 <% else %>
 repo --name=base --baseurl=http://169.254.254.254:8080/<%= @os %>/linux/releases/<%= @version %>/Server/x86_64/os/
 <% end %>
