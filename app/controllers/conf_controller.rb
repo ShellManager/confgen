@@ -1,6 +1,6 @@
 class ConfController < ApplicationController
     def ipxe
-        if ! Vm.find_by(:mac => params[:mac].upcase, :status => nil) && ! Vm.find_by(:mac => params[:mac].upcase, :status => "installing") && ! Vm.find_by(:mac => params[:mac].upcase, :status => "installed")
+        if ! Vm.find_by(:mac => params[:mac].upcase, :status => nil) && ! Vm.find_by(:mac => params[:mac].upcase, :status => "installing") && ! Vm.find_by(:mac => params[:mac].upcase, :status => "provisioning")
             vm = Vm.find_by(:mac => params[:mac].upcase)
             vm.status = "booted_os"
             vm.save!
