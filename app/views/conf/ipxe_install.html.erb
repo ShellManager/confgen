@@ -1,7 +1,7 @@
 #!ipxe
 imgfree
 <% if @os == 'centos' || @os == 'fedora' %>
-kernel http://169.254.254.254:8080/<%= @os =>/<%=@version%>/os/x86_64/images/pxeboot/vmlinuz initrd=initrd.img <% if @version == 7 %>inst.<% end %>ks=http://169.254.254.254/kickstart?mac=${net0/mac} ip=169.254.250.250:::255.255.0.0:<%= @name %>::none
+kernel http://169.254.254.254:8080/<%= @os %>/<%=@version%>/os/x86_64/images/pxeboot/vmlinuz initrd=initrd.img <% if @version == 7 %>inst.<% end %>ks=http://169.254.254.254/kickstart?mac=${net0/mac} ip=169.254.250.250:::255.255.0.0:<%= @name %>::none
 initrd initrd.img
 <% elsif @os == 'debian' || @os == 'ubuntu' %>
 kernel http://169.254.254.254:8080/<%= @os %>/dists/<%= @version %>/main/installer-amd64/current/images/netboot/<%= @os %>-installer/amd64/linux
