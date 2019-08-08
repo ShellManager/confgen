@@ -34,7 +34,7 @@ d-i mirror/http/directory string /<%= @os %>
 d-i mirror/suite string <%= @version %>
 
 d-i passwd/make-user boolean false
-
+d-i passwd/root-login boolean true
 d-i passwd/root-password password root
 d-i passwd/root-password-again password root
 
