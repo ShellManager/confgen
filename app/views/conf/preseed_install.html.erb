@@ -31,6 +31,7 @@ d-i mirror/protocol string http
 d-i mirror/country string manual
 d-i mirror/http/hostname string 169.254.254.254:8080
 d-i mirror/http/directory string /<%= @os %>
+d-i mirror/suite string <%= @version %>
 
 d-i passwd/make-user boolean false
 
