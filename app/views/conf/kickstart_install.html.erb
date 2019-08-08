@@ -23,23 +23,38 @@ firstboot --disabled
 eula --agreed
 services --enabled=NetworkManager,sshd
 reboot
-
+<% if @os == "centos" %>
 repo --name=base --baseurl=http://169.254.254.254:8080/<%= @os %>/<%= @version %>/os/x86_64/
 repo --name=epel-release --baseurl=http://169.254.254.254:8080/epel/<%= @version %>/x86_64/
 repo --name=elrepo-kernel --baseurl=http://169.254.254.254:8080/linux/kernel/elrepo/<%= @version %>/x86_64/
 repo --name=elrepo-release --baseurl=http://169.254.254.254:8080/linux/kernel/elrepo/<%= @version %>/x86_64/
 repo --name=elrepo-extras --baseurl=http://169.254.254.254:8080/linux/kernel/elrepo/<%= @version %>/x86_64/
-
+<% else %>
+repo --name=base --baseurl=http://169.254.254.254:8080/<%= @os %>/linux/releases/<%= @version %>/Server/x86_64/os/
+<% end %>
 %packages --ignoremissing --excludedocs
 @base
 @Base
 @Core
 @Development Tools
+<% if @os == "centos" %>
 kernel-ml
 kernel-ml-devel
 kernel-ml-tools
 kernel-ml-tools-libs
 kernel-ml-headers
+-kernel
+-kernel-devel
+-kernel-tools-libs
+-kernel-tools
+-kernel-headers
+<% else %>
+kernel
+kernel-devel
+kernel-tools-libs
+kernel-tools
+kernel-headers
+<% end %>
 openssh-clients
 expect
 make
@@ -78,11 +93,6 @@ openssh-server
 -abrt-addon-python
 -abrt-addon-ccpp
 -abrt-addon-kerneloops
--kernel
--kernel-devel
--kernel-tools-libs
--kernel-tools
--kernel-headers
 -aic94xx-firmware
 -atmel-firmware
 -b43-openfwwf
