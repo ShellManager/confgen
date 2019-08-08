@@ -1,13 +1,19 @@
 class ConfController < ApplicationController
     def ipxe
-        if ! Vm.find_by(:mac => params[:mac].upcase) 
+        if ! Vm.find_by(:mac => params[:mac].upcase, :status => nil) 
+            vm.status = "Booted OS via iPXE"
+            vm.save!
             render 'conf/ipxe_local' 
+            
         else
             vm = Vm.find_by(:mac => params[:mac].upcase)
             @os = vm.os
             @name = vm.name
             @version = vm.version
+            vm.status = "Booted Installer via iPXE"
+            vm.save!
             render 'conf/ipxe_install' 
+            
         end
     end
     def kickstart
@@ -15,12 +21,16 @@ class ConfController < ApplicationController
             @os = vm.os
             @version = vm.version
             @hostname = vm.name
+            vm.status = "Kickstart Retrieved"
+            vm.save!
             render 'conf/kickstart_install' 
     end
     def preseed
         vm = Vm.find_by(:mac => params[:mac].upcase)
             @os = vm.os
             @hostname = vm.name
+            vm.status = "Preseed Retrieved"
+            vm.save!
             render 'conf/preseed_install' 
     end
 end
