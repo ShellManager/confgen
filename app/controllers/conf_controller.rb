@@ -1,6 +1,6 @@
 class ConfController < ApplicationController
     def ipxe
-        if ! Vm.find_by(:mac => params[:mac]) 
+        if ! Vm.find_by(:mac => params[:mac].upcase) 
             render 'conf/ipxe_local' 
         else
             vm = Vm.find_by(:mac => params[:mac].upcase)
