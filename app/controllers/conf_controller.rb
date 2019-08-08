@@ -13,19 +13,14 @@ class ConfController < ApplicationController
     def kickstart
         vm = Vm.find_by(:mac => params[:mac])
             @os = vm.os
-            @name = vm.name
             @version = vm.version
             @hostname = vm.name
-            @ip = vm.ip
             render 'conf/kickstart_install' 
     end
     def preseed
         vm = Vm.find_by(:mac => params[:mac])
             @os = vm.os
-            @name = vm.name
-            @version = vm.version
             @hostname = vm.name
-            @ip = vm.ip
             render 'conf/preseed_install' 
     end
 end
