@@ -8,4 +8,4 @@
 Vm.create(name: 'c6', mac: 'ce:nt:os:06', os: 'centos', version: '6', ip: '100.100.100.99')
 Vm.create(name: 'c7', mac: 'ce:nt:os:07', os: 'centos', version: '7', ip: '100.100.100.100')
 Vm.create(name: 'd10', mac: 'de:bi:an:10', os: 'debian', version: 'stretch', ip: '100.100.100.110')
-Vm.create(name: 'u18', mac: 'ub:un:tu:18', os: 'ubuntu', version: 'bionic', ip: '100.100.100.118')
+Vm.create(name: 'u18', mac: 'ub:un:tu:18', os: 'ubuntu', version: 'bionic', ip: '100.100.100.118', disk: "50G", status: 'pending')

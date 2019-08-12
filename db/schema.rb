@@ -19,8 +19,9 @@ ActiveRecord::Schema.define(version: 2019_08_07_115919) do
     t.string "name"
     t.string "mac"
     t.string "os"
-    t.integer "version"
+    t.string "version"
     t.string "ip"
+    t.string "disk"
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
