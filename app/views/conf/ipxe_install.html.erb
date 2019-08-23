@@ -6,6 +6,6 @@ initrd http://169.254.254.254:8080/<%= @os %>/<% if @os == "fedora" %>linux/rele
 <% elsif @os == 'debian' || @os == 'ubuntu' %>
 kernel http://169.254.254.254:8080/<%= @os %>/dists/<%= @version %>/main/installer-amd64/current/images/netboot/<%= @os %>-installer/amd64/linux
 initrd http://169.254.254.254:8080/<%= @os %>/dists/<%= @version %>/main/installer-amd64/current/images/netboot/<%= @os %>-installer/amd64/initrd.gz
-imgargs linux auto=true url=http://169.254.254.254/preseed?mac=${net0/mac} netcfg/link_wait_timeout=1 netcfg/disable_autoconfig=true netcfg/get_ipaddress=169.254.250.250 netcfg/get_netmask=255.255.0.0 netcfg/get_gateway= netcfg/get_nameservers= netcfg/confirm_static=true netcfg/hostname=<%= @name %> netcfg/choose_interface=auto priority=critical vga=788 initrd=initrd.gz ip=169.254.250.250:::255.255.0.0:<%= @name %>::none --- quiet 
+imgargs linux auto=true url=http://169.254.254.254/preseed?mac=${net0/mac} netcfg/link_wait_timeout=1 netcfg/disable_autoconfig=true <% if @version != "xenial" %>netcfg/do_not_use_netplan=true<% end %> netcfg/get_ipaddress=169.254.250.250 netcfg/get_netmask=255.255.0.0 netcfg/get_gateway= netcfg/get_nameservers= netcfg/confirm_static=true netcfg/hostname=<%= @name %> netcfg/choose_interface=auto priority=critical vga=788 initrd=initrd.gz ip=169.254.250.250:::255.255.0.0:<%= @name %>::none --- quiet 
 <% end %>
 boot
