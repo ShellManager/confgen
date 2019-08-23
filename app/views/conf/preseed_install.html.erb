@@ -22,7 +22,9 @@ d-i netcfg/get_netmask string 255.255.0.0
 d-i netcfg/get_gateway string 
 d-i netcfg/get_nameservers string 
 d-i netcfg/confirm_static boolean true
-
+<% if @version != "xenial" %>
+d-i netcfg/do_not_use_netplan true
+<% end %>
 d-i netcfg/hostname string <%= @hostname %>
 
 d-i hw-detect/load_firmware boolean true
