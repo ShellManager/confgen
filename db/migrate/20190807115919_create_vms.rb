@@ -6,7 +6,7 @@ class CreateVms < ActiveRecord::Migration[5.2]
       t.string :os
       t.string :version
       t.string :ip
-	  t.string :disk
+	    t.string :disk
       t.string :status
       t.timestamps
     end
