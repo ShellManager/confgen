@@ -5,6 +5,15 @@ class ConfController < ApplicationController
             vm.status = "booted_os"
             vm.save!
             render 'conf/ipxe_local' 
+        
+        elsif Vm.find_by(:mac => params[:mac].upcase, :status => "installing")
+            vm = Vm.find_by(:mac => params[:mac].upcase)
+            vm.status = "ready_for_provision"
+            vm.save!
+            render 'conf/ipxe_local' 
+
+        elsif Vm.find_by(:mac => params[:mac].upcase, :status => "provisioned")
+            render 'conf/ipxe_local'
             
         else
             vm = Vm.find_by(:mac => params[:mac].upcase)
