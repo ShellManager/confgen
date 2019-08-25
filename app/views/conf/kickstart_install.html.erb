@@ -89,6 +89,7 @@ openldap-clients
 policycoreutils-python
 nfs-utils
 openssh-server
+NetworkManager-glib
 -abrt-libs
 -abrt-tui
 -abrt-cli
@@ -165,7 +166,7 @@ openssh-server
 %end
 
 %post
-yum install -y sudo
+yum install -y sudo NetworkManager-glib
 sed -i "s/^.*requiretty/#Defaults requiretty/" /etc/sudoers
 /bin/echo 'UseDNS no' >> /etc/ssh/sshd_config
 yum clean all
